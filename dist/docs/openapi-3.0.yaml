@@ -3172,6 +3172,8 @@ components:
         business_account:
           additionalProperties: true
           type: object
+        core:
+          $ref: '#/components/schemas/UserCore'
         creator_subscriptions_count:
           type: integer
         has_graduated_access:
@@ -3233,6 +3235,19 @@ components:
       - legacy
       - rest_id
       - profile_image_shape
+      - core
+    UserCore:
+      properties:
+        created_at:
+          $ref: '#/components/schemas/TwitterTimeFormat'
+        name:
+          type: string
+        screen_name:
+          type: string
+      required:
+      - created_at
+      - name
+      - screen_name
     UserFeatures:
       properties:
         mediatool_studio_library:
@@ -3294,8 +3309,6 @@ components:
           type: boolean
         can_media_tag:
           type: boolean
-        created_at:
-          $ref: '#/components/schemas/TwitterTimeFormat'
         default_profile:
           type: boolean
         default_profile_image:
@@ -3365,13 +3378,6 @@ components:
           type: string
         url:
           type: string
-        verified:
-          type: boolean
-        verified_type:
-          enum:
-          - Business
-          - Government
-          type: string
         want_retweets:
           type: boolean
         withheld_in_countries:
@@ -3400,10 +3406,8 @@ components:
       - profile_image_url_https
       - profile_interstitial_type
       - screen_name
-      - status
       - statuses_count
       - translator_type
-      - verified
     UserLegacyExtendedProfile:
       properties:
         birthdate:
